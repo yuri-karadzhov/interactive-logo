@@ -1,0 +1,92 @@
+{
+    "requireSpaceAfterKeywords": [
+      "else",
+      "return"
+    ],
+    "disallowSpaceAfterKeywords": [
+        "if",
+        "for",
+        "while",
+        "do",
+        "switch",
+        "catch"
+    ],
+    "disallowKeywords": [
+        "with"
+    ],
+    "disallowKeywordsOnNewLine": [
+        "else",
+        "catch"
+    ],
+
+    "disallowSpaceAfterPrefixUnaryOperators": true,
+    "disallowSpaceBeforePostfixUnaryOperators": [
+        "++",
+        "--"
+    ],
+    "requireSpaceBeforeBinaryOperators": true,
+    "requireSpaceAfterBinaryOperators": true,
+
+    "disallowMultipleVarDecl": true,
+
+    "disallowSpacesInsideParentheses": true,
+    "disallowEmptyBlocks": true,
+
+    "requireParenthesesAroundIIFE": true,
+    "requireSpaceBetweenArguments": true,
+    "requireSpacesInFunctionDeclaration": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "disallowSpacesInFunctionDeclaration": {
+        "beforeOpeningRoundBrace": true
+    },
+    "requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "disallowSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningRoundBrace": true,
+    },
+    "disallowSpacesInNamedFunctionExpression": {
+        "beforeOpeningRoundBrace": true
+    },
+    "requireSpacesInNamedFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+
+    "requireSpacesInConditionalExpression": {
+        "afterTest": true,
+        "beforeConsequent": true,
+        "afterConsequent": true,
+        "beforeAlternate": true
+    },
+
+    "disallowSpaceBeforeBinaryOperators": [
+        ","
+    ],
+    "requireCommaBeforeLineBreak": true,
+    "requireTrailingComma": false,
+    "disallowTrailingComma": true,
+
+    "validateQuoteMarks": "'",
+    "disallowMultipleLineStrings": true,
+    "disallowYodaConditions": true,
+
+    "disallowSpacesInsideArrayBrackets": true,
+
+    "requireDotNotation": false,
+    "disallowSpaceAfterObjectKeys": true,
+    "disallowSpacesInsideObjectBrackets": true,
+    "disallowQuotedKeysInObjects": false,
+
+    "maximumLineLength": {
+        "value": 120,
+        "allowUrlComments": true
+    },
+    "requireSpaceAfterLineComment": true,
+    "requireSpaceBeforeObjectValues": true,
+    "requireLineFeedAtFileEnd": true,
+    "disallowMultipleLineBreaks": true,
+    "disallowMixedSpacesAndTabs": true,
+    "disallowTrailingWhitespace": true,
+    "validateLineBreaks": "LF"
+}

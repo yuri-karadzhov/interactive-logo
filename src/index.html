@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>0+x</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+</head>
+
+<body>
+  <div class="zerologo js-zerologo"></div>
+  <div class="js-options"></div>
+
+  <script type="x-shader/x-vertex" id="vertexShader">
+		attribute float a_Size;
+		attribute float a_Alpha;
+		varying float v_Alpha;
+		void main() {
+			v_Alpha = a_Alpha;
+			vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+      gl_PointSize = a_Size;
+			gl_Position = projectionMatrix * mvPosition;
+		}
+	</script>
+
+	<script type="x-shader/x-fragment" id="fragmentShader">
+		uniform sampler2D u_Texture;
+		varying float v_Alpha;
+		void main() {
+			vec4 color = vec4(1.0, 1.0, 1.0, v_Alpha) * texture2D(u_Texture, vec2(1.0, 1.0) - gl_PointCoord);
+			gl_FragColor = color;
+		}
+	</script>
+
+</body>
+</html>

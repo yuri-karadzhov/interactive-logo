@@ -1,0 +1,23 @@
+# NODEJS
+node_modules/
+bower_components/
+
+# DIST
+dist/
+
+# IDE
+.idea
+.DS_Store
+.tern-project
+*.sublime-project
+*.sublime-workspace
+*.sqlite3
+
+# OS
+.directory
+
+# LOG
+*.log
+
+# CACHE
+*.sass-cache

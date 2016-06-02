@@ -1,0 +1,37 @@
+$controls-color: rgba(255, 255, 255, .7);
+$controls-header-color: rgba(255, 255, 255, .3);
+$control-header-height: 50px;
+
+.controls {
+  background-color: $controls-color;
+  height: 355px;
+  margin: 10px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: height 500ms;
+  width: 300px;
+
+  &-header {
+    background-color: $controls-header-color;
+    cursor: pointer;
+    height: $control-header-height;
+    line-height: $control-header-height;
+    margin-top: 0;
+  }
+
+  &-label {
+    display: inline-block;
+    text-align: right;
+    width: 130px;
+  }
+
+  &-submit {
+    margin: 10px;
+  }
+
+  &__closed {
+    height: $control-header-height;
+  }
+}
