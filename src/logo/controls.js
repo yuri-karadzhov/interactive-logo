@@ -39,15 +39,16 @@ class Controls {
     };
   }
 
-  _setAttribute(name, aName) {
+  _setAttribute(name, aName, isFree = false) {
+    const geometry = isFree ? this.logo.freeGeometry : this.logo.bufferedGeometry;
     return this._setValue(name, () => {
       const minName = `min${name.substring(3)}`;
       const maxName = `max${name.substring(3)}`;
-      const values = this.logo.bufferedGeometry.attributes[aName].array;
+      const values = geometry.attributes[aName].array;
       for(let i = 0, l = values.length; i < l; i++) {
         values[i] = randomRange(this.logo.cfg[minName], this.logo.cfg[maxName]);
       }
-      this.logo.bufferedGeometry.attributes[aName].needsUpdate = true;
+      geometry.attributes[aName].needsUpdate = true;
     });
   }
 
@@ -69,6 +70,25 @@ class Controls {
     this.element.querySelector('#maxbrownspeed').addEventListener('change', this._setValue('maxBrownSpeed'));
     this.element.querySelector('#minbrownradius').addEventListener('change', this._setValue('minBrownRadius'));
     this.element.querySelector('#maxbrownradius').addEventListener('change', this._setValue('maxBrownRadius'));
+    this.element.querySelector('#initialradius').addEventListener('change', this._setValue('initRadius'));
+    this.element.querySelector('#freeamount').addEventListener('change', this._setValue('freeAmount', () => {
+      this.logo.scene.remove(this.logo.scene.getObjectByName('free.particles'));
+      this.logo.addFreeParticles();
+    }));
+    this.element.querySelector('#minfreesize')
+      .addEventListener('change', this._setAttribute('minFreeSize', 'a_Size', true));
+    this.element.querySelector('#maxfreesize')
+      .addEventListener('change', this._setAttribute('maxFreeSize', 'a_Size', true));
+    this.element.querySelector('#minfreealpha')
+      .addEventListener('change', this._setAttribute('minFreeAlpha', 'a_Alpha', true));
+    this.element.querySelector('#maxfreealpha')
+      .addEventListener('change', this._setAttribute('maxFreeAlpha', 'a_Alpha', true));
+    this.element.querySelector('#minfreeframe').addEventListener('change', this._setValue('minFreeFrame'));
+    this.element.querySelector('#maxfreeframe').addEventListener('change', this._setValue('maxFreeFrame'));
+    this.element.querySelector('#minfreespeed').addEventListener('change', this._setValue('minFreeSpeed'));
+    this.element.querySelector('#maxfreespeed').addEventListener('change', this._setValue('maxFreeSpeed'));
+
+    this.element.querySelector('.js-controls-restart').addEventListener('click', () => this.logo.onReset());
   }
 }
 
