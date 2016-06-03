@@ -40,8 +40,8 @@ class Controls {
   }
 
   _setAttribute(name, aName, isFree = false) {
-    const geometry = isFree ? this.logo.freeGeometry : this.logo.bufferedGeometry;
     return this._setValue(name, () => {
+      const geometry = isFree ? this.logo.freeGeometry : this.logo.bufferedGeometry;
       const minName = `min${name.substring(3)}`;
       const maxName = `max${name.substring(3)}`;
       const values = geometry.attributes[aName].array;
