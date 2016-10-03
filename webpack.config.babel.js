@@ -102,7 +102,12 @@ if(!IS_DEVELOPMENT) {
     loader: 'babel',
     query: {
       babelrc: false,
-      presets: ['es2015-webpack']
+      presets: [
+        'es2015',
+        {
+            modules: false
+        }
+      ]
     }
   });
   config.plugins.push(
