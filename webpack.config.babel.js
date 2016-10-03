@@ -24,12 +24,20 @@ const config = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.scss']
+    extensions: ['.js', '.scss']
   },
-  devtool: IS_DEVELOPMENT ? null : 'source-map',
+  devtool: IS_DEVELOPMENT ? false : 'source-map',
   plugins: [
     new webpack.LoaderOptionsPlugin({
       options: {
+        sassLoader: {
+          data: `$is_development: ${IS_DEVELOPMENT};`
+        },
+        postcss: [autoprefixer({
+          browsers: browserslist(null, {
+            path: cfg.ext.browserslist
+          })
+        })],
         debug: IS_DEVELOPMENT,
       }
     }),
@@ -78,14 +86,6 @@ const config = {
       test: /\.view.html/,
       loader: 'html-loader'
     }]
-  },
-  postcss: [autoprefixer({
-    browsers: browserslist(null, {
-      path: cfg.ext.browserslist
-    })
-  })],
-  sassLoader: {
-    data: `$is_development: ${IS_DEVELOPMENT};`
   },
   devServer: {
     watchOptions: {
