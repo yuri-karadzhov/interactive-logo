@@ -26,7 +26,6 @@ gulp.task('default', ['watch']);
 
 gulp.task('watch', () => {
   var config = Object.create(wpCfg);
-	config.debug = true;
   config.entry.index.unshift('webpack-dev-server/client?http://localhost:8080/');
 
 	// Start a webpack-dev-server

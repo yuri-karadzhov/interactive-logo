@@ -25,6 +25,11 @@ const config = {
   },
   devtool: IS_DEVELOPMENT ? null : 'source-map',
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        debug: IS_DEVELOPMENT,
+      }
+    }),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       IS_DEVELOPMENT: JSON.stringify(IS_DEVELOPMENT)
