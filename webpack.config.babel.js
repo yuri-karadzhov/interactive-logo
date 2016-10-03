@@ -1,5 +1,6 @@
 'use strict';
 
+import path from 'path';
 import webpack from 'webpack';
 import browserslist from 'browserslist';
 import autoprefixer from 'autoprefixer';
@@ -10,13 +11,15 @@ import cfg from './build.config';
 
 const IS_DEVELOPMENT = process.env.NODE_ENV !== 'production';
 
+const contextPath = path.join(__dirname, 'src');
+const outputPath = path.join(__dirname, 'dist');
 const config = {
-  context: `${__dirname}/src`,
+  context: contextPath,
   entry: {
     index: ['./index']
   },
   output: {
-    path: `${__dirname}/dist`,
+    path: outputPath,
     publicPath: '/',
     filename: '[name].js'
   },
@@ -50,33 +53,25 @@ const config = {
   module: {
     loaders: [{
       test: /\.scss$/,
-      include: `${__dirname}/src`,
+      include: path.join(__dirname, 'src'),
       loader: IS_DEVELOPMENT ?
         'style!css!resolve-url!sass' :
         ExtractTextPlugin.extract('css?minimize!postcss!resolve-url!sass')
     }, {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      include: [
-        `${__dirname}/src/textures`
-      ],
+      include: path.join(__dirname, 'src/textures'),
       loader: 'file-loader?name=[path][name].[ext]'
     }, {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      exclude: [
-        `${__dirname}/src/textures`
-      ],
+      exclude: path.join(__dirname, 'src/textures'),
       loader: 'url-loader?limit=10000&name=[path][name].[ext]'
     }, {
       test: /\.json/,
-      include: [
-        `${__dirname}/src/models`
-      ],
+      include: path.join(__dirname, 'src/models'),
       loader: 'file-loader?name=[path][name].[ext]'
     }, {
       test: /\.json/,
-      include: [
-        `${__dirname}/src/fonts`
-      ],
+      include: path.join(__dirname, 'src/fonts'),
       loader: 'file-loader?name=[path][name].[ext]'
     }, {
       test: /\.view.html/,
@@ -103,7 +98,7 @@ const config = {
 if(!IS_DEVELOPMENT) {
   config.module.loaders.push({
     test: /\.js$/,
-    include: `${__dirname}/src`,
+    include: path.join(__dirname, 'src'),
     loader: 'babel',
     query: {
       babelrc: false,
