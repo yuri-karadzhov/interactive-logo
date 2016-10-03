@@ -39,6 +39,14 @@ const config = {
           })
         })],
         debug: IS_DEVELOPMENT,
+
+        // temporary until the following issues wouldn't be resolved:
+        // - https://github.com/bholloway/resolve-url-loader/issues/33
+        // - https://github.com/webpack/webpack/issues/3018
+        context: contextPath,
+        output: {
+          path: outputPath
+        }
       }
     }),
     new webpack.NoErrorsPlugin(),
