@@ -37,7 +37,8 @@ const config = {
     new webpack.DefinePlugin({
       IS_DEVELOPMENT: JSON.stringify(IS_DEVELOPMENT)
     }),
-    new ExtractTextPlugin('[name].css', {
+    new ExtractTextPlugin({
+      filename: '[name].css',
       allChunks: true,
       disable: IS_DEVELOPMENT
     }),
