@@ -55,8 +55,7 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^2.1.0-beta.5",
-    "webpack-dev-server": "^2.1.0-beta.8",
-    "yargs": "^4.6.0"
+    "webpack-dev-server": "^2.1.0-beta.8"
   },
   "dependencies": {
     "three": "^0.77.1"

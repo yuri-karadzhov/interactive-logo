@@ -11,16 +11,8 @@ import del from 'del';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
-import yargs from 'yargs';
-
-const argv = yargs
-  .alias('p', 'production')
-  .argv;
-
 import cfg from './build.config';
 import wpCfg from './webpack.config.babel';
-
-const IS_DEVELOPMENT = argv.p || process.env.NODE_ENV === 'development';
 
 gulp.task('default', ['watch']);
 
