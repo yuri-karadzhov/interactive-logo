@@ -10,7 +10,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import cfg from './build.config';
 
 const IS_DEVELOPMENT = process.env.NODE_ENV !== 'production';
-
 const contextPath = path.join(__dirname, 'src');
 const outputPath = path.join(__dirname, 'dist');
 const config = {
@@ -112,10 +111,12 @@ if(!IS_DEVELOPMENT) {
     query: {
       babelrc: false,
       presets: [
-        'es2015',
-        {
-            modules: false
-        }
+        [
+          'es2015',
+          {
+              modules: false
+          }
+        ]
       ]
     }
   });
