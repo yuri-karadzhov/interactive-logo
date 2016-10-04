@@ -51,8 +51,7 @@ module.exports = {
     clean: 'dist/img'
   },
   ext: {
-    jscs: '.jscsrc',
-    jshint: '.jshintrc',
+    eslint: '.eslintrc',
     browserslist: 'browserslist'
   },
   static: {

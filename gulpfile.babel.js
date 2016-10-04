@@ -59,13 +59,9 @@ gulp.task('lint:code', () => {
       }))
     }))
     .pipe($$.cached('lint:code'))
-    .pipe($$.jscs({
-      configPath: cfg.ext.jscs,
-      fix: true
-    }))
-    .pipe($$.jshint(cfg.ext.jshint))
-    .pipe($$.jshint.reporter('jshint-stylish'))
-    .pipe($$.jshint.reporter('fail'));
+    .pipe($$.eslint({ configFile: cfg.ext.eslint }))
+    .pipe($$.eslint.format())
+    .pipe($$.eslint.failAfterError());
 });
 
 gulp.task('style:lint', ['lint:style']);
