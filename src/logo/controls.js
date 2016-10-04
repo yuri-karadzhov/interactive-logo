@@ -1,6 +1,6 @@
 'use strict';
 
-import style from './_controls.scss';
+import './_controls.scss';
 import template from './controls.view.html';
 
 import {randomRange} from './utils';
@@ -35,7 +35,7 @@ class Controls {
   _setValue(name, cb) {
     return (event) => {
       this.logo.cfg[name] = +event.target.value;
-      if(cb) cb();
+      if (cb) cb();
     };
   }
 
@@ -45,7 +45,7 @@ class Controls {
       const minName = `min${name.substring(3)}`;
       const maxName = `max${name.substring(3)}`;
       const values = geometry.attributes[aName].array;
-      for(let i = 0, l = values.length; i < l; i++) {
+      for (let i = 0, l = values.length; i < l; i++) {
         values[i] = randomRange(this.logo.cfg[minName], this.logo.cfg[maxName]);
       }
       geometry.attributes[aName].needsUpdate = true;

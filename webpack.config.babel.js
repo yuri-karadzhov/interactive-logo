@@ -57,7 +57,7 @@ const config = {
       allChunks: true,
       disable: IS_DEVELOPMENT
     }),
-    new HtmlWebpackPlugin ({
+    new HtmlWebpackPlugin({
       inject: true,
       template: 'index.html',
       minify: IS_DEVELOPMENT ? false : {
@@ -70,9 +70,9 @@ const config = {
     loaders: [{
       test: /\.scss$/,
       include: path.join(__dirname, 'src'),
-      loader: IS_DEVELOPMENT ?
-        'style!css!resolve-url!sass' :
-        ExtractTextPlugin.extract('css?minimize!postcss!resolve-url!sass')
+      loader: IS_DEVELOPMENT
+        ? 'style!css!resolve-url!sass'
+        : ExtractTextPlugin.extract('css?minimize!postcss!resolve-url!sass')
     }, {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
       include: path.join(__dirname, 'src/textures'),
@@ -103,7 +103,7 @@ const config = {
   }
 };
 
-if(!IS_DEVELOPMENT) {
+if (!IS_DEVELOPMENT) {
   config.module.loaders.push({
     test: /\.js$/,
     include: path.join(__dirname, 'src'),
@@ -114,7 +114,7 @@ if(!IS_DEVELOPMENT) {
         [
           'es2015',
           {
-              modules: false
+            modules: false
           }
         ]
       ]
@@ -123,9 +123,9 @@ if(!IS_DEVELOPMENT) {
   config.plugins.push(
       new webpack.optimize.UglifyJsPlugin({
         compress: {
-          warnings:     false,
+          warnings: false,
           'drop_console': true,
-          unsafe:       true
+          unsafe: true
         }
       })
   );

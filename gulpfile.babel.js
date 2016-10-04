@@ -20,20 +20,20 @@ gulp.task('watch', () => {
   var config = Object.create(wpCfg);
   config.entry.index.unshift('webpack-dev-server/client?http://localhost:8080/');
 
-	// Start a webpack-dev-server
-	new WebpackDevServer(webpack(config), {
-		stats: {
-			colors: true
-		}
-	}).listen(8080, 'localhost', function(err) {
-		if(err) throw new $$.util.PluginError('webpack-dev-server', err);
-		$$.util.log('[webpack-dev-server]', 'http://localhost:8080/');
-	});
+  // Start a webpack-dev-server
+  new WebpackDevServer(webpack(config), {
+    stats: {
+      colors: true
+    }
+  }).listen(8080, 'localhost', function(err) {
+    if (err) throw new $$.util.PluginError('webpack-dev-server', err);
+    $$.util.log('[webpack-dev-server]', 'http://localhost:8080/');
+  });
 });
 
 gulp.task('build', (cb) => {
   webpack(wpCfg, (err, stats) => {
-    if(err) throw new $$.util.PluginError('webpack', err);
+    if (err) throw new $$.util.PluginError('webpack', err);
     $$.util.log('[webpack]', stats.toString({
       colors: true,
       progress: true
