@@ -3,7 +3,7 @@
 import logo from '../models/logo-flat.json';
 import particle from '../textures/particle.png';
 
-import THREE from 'three';
+import * as THREE from 'three';
 import {randomRange} from './utils';
 
 class Logo {
