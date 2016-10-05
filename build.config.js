@@ -1,6 +1,11 @@
-var fs = require('fs');
-
 module.exports = {
+  src: {
+    root: 'src',
+    output: 'dist',
+    models: 'src/models',
+    fonts: 'src/fonts',
+    textures: 'src/textures'
+  },
   code: {
     src: 'src/**/*.js',
     main: 'src/index.js',
@@ -51,8 +56,7 @@ module.exports = {
     clean: 'dist/img'
   },
   ext: {
-    jscs: '.jscsrc',
-    jshint: '.jshintrc',
+    eslint: '.eslintrc',
     browserslist: 'browserslist'
   },
   static: {
