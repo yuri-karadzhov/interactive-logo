@@ -8,10 +8,13 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import cfg from './build.config';
 
 const IS_DEVELOPMENT = process.env.NODE_ENV !== 'production';
-const contextPath = path.join(__dirname, 'src');
-const outputPath = path.join(__dirname, 'dist');
+const rootPath = path.join(__dirname, cfg.src.root);
+const outputPath = path.join(__dirname, cfg.src.output);
+const texturesPath = path.join(__dirname, cfg.src.textures);
+const modelsPath = path.join(__dirname, cfg.src.models);
+const fontsPath = path.join(__dirname, cfg.src.fonts);
 const config = {
-  context: contextPath,
+  context: rootPath,
   entry: {
     index: ['./index']
   },
@@ -40,7 +43,7 @@ const config = {
         // temporary until the following issues wouldn't be resolved:
         // - https://github.com/bholloway/resolve-url-loader/issues/33
         // - https://github.com/webpack/webpack/issues/3018
-        context: contextPath,
+        context: rootPath,
         output: {
           path: outputPath
         }
@@ -67,25 +70,25 @@ const config = {
   module: {
     loaders: [{
       test: /\.scss$/,
-      include: path.join(__dirname, 'src'),
+      include: rootPath,
       loader: IS_DEVELOPMENT
         ? 'style!css!resolve-url!sass'
         : ExtractTextPlugin.extract('css?minimize!postcss!resolve-url!sass')
     }, {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      include: path.join(__dirname, 'src/textures'),
+      include: texturesPath,
       loader: 'file-loader?name=[path][name].[ext]'
     }, {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      exclude: path.join(__dirname, 'src/textures'),
+      exclude: texturesPath,
       loader: 'url-loader?limit=10000&name=[path][name].[ext]'
     }, {
       test: /\.json/,
-      include: path.join(__dirname, 'src/models'),
+      include: modelsPath,
       loader: 'file-loader?name=[path][name].[ext]'
     }, {
       test: /\.json/,
-      include: path.join(__dirname, 'src/fonts'),
+      include: fontsPath,
       loader: 'file-loader?name=[path][name].[ext]'
     }, {
       test: /\.view.html/,
@@ -104,7 +107,7 @@ const config = {
 if (!IS_DEVELOPMENT) {
   config.module.loaders.push({
     test: /\.js$/,
-    include: path.join(__dirname, 'src'),
+    include: rootPath,
     loader: 'babel',
     query: {
       babelrc: false,
