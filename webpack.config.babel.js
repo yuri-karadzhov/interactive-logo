@@ -1,5 +1,3 @@
-'use strict';
-
 import path from 'path';
 import webpack from 'webpack';
 import browserslist from 'browserslist';

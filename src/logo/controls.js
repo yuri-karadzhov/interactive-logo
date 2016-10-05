@@ -1,5 +1,3 @@
-'use strict';
-
 import './_controls.scss';
 import template from './controls.view.html';
 

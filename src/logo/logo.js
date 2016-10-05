@@ -1,5 +1,3 @@
-'use strict';
-
 import logo from '../models/logo-flat.json';
 import particle from '../textures/particle.png';
 
