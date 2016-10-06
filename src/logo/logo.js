@@ -6,6 +6,8 @@ import {randomRange} from './utils';
 
 class Logo {
   constructor(element, {
+    vertexShader,
+    fragmentShader,
     cameraHeight = 50,
     radius = 10,
     minParticleSize = 1,
@@ -29,6 +31,10 @@ class Logo {
     minFreeFrame = 180,
     maxFreeFrame = 300
   }) {
+    if (!vertexShader || !fragmentShader) {
+      throw new Error('Please, provide both vertexShader and fragmentShader to Logo.');
+    }
+
     this.element = element;
     this.cfg = {
       cameraHeight,
@@ -76,8 +82,8 @@ class Logo {
           value: new THREE.TextureLoader().load(particle)
         }
       },
-      vertexShader: document.getElementById('vertexShader').textContent,
-      fragmentShader: document.getElementById('fragmentShader').textContent,
+      vertexShader,
+      fragmentShader,
       transparent: true
     });
 
