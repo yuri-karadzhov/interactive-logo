@@ -3,9 +3,7 @@ import plugins from 'gulp-load-plugins';
 
 const $$ = plugins();
 
-// import buffer from 'vinyl-buffer';
 import del from 'del';
-// import source from 'vinyl-source-stream';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
