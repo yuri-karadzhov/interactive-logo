@@ -16,7 +16,11 @@ const fontsPath = path.join(__dirname, cfg.src.fonts);
 const config = {
   context: rootPath,
   entry: {
-    index: ['./index']
+    index: [
+      IS_DEVELOPMENT
+        ? './index'
+        : './index.global'
+    ]
   },
   output: {
     path: outputPath,
