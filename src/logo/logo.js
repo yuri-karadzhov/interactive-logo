@@ -264,8 +264,8 @@ class Logo {
   }
 
   onResize() {
-    this.height = window.innerHeight;
-    this.width = window.innerWidth;
+    this.height = this.element.parentNode.clientHeight;
+    this.width = this.element.parentNode.clientWidth;
     this.aspect = this.width / this.height;
     const camera = this.camera;
     camera.position.z = this.cfg.cameraHeight;
