@@ -75,22 +75,6 @@ const config = {
         ? 'style!css!resolve-url!sass'
         : ExtractTextPlugin.extract('css?minimize!postcss!resolve-url!sass')
     }, {
-      test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      include: texturesPath,
-      loader: 'file-loader?name=[path][name].[ext]'
-    }, {
-      test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      exclude: texturesPath,
-      loader: 'url-loader?limit=10000&name=[path][name].[ext]'
-    }, {
-      test: /\.json/,
-      include: modelsPath,
-      loader: 'file-loader?name=[path][name].[ext]'
-    }, {
-      test: /\.json/,
-      include: fontsPath,
-      loader: 'file-loader?name=[path][name].[ext]'
-    }, {
       test: /\.view.html/,
       loader: 'html-loader'
     }]
@@ -106,6 +90,9 @@ const config = {
 
 if (!IS_DEVELOPMENT) {
   config.module.loaders.push({
+    test: /\.(png|jpg|svg|ttf|eot|woff|woff2|json)$/,
+    loader: 'url-loader?limit=30000&name=[path][name].[ext]'
+  }, {
     test: /\.js$/,
     include: rootPath,
     loader: 'babel',
@@ -130,6 +117,24 @@ if (!IS_DEVELOPMENT) {
         }
       })
   );
+} else {
+  config.module.loaders.push({
+    test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+    include: texturesPath,
+    loader: 'file-loader?name=[path][name].[ext]'
+  }, {
+    test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+    exclude: texturesPath,
+    loader: 'url-loader?limit=10000&name=[path][name].[ext]'
+  }, {
+    test: /\.json/,
+    include: modelsPath,
+    loader: 'file-loader?name=[path][name].[ext]'
+  }, {
+    test: /\.json/,
+    include: fontsPath,
+    loader: 'file-loader?name=[path][name].[ext]'
+  });
 }
 
 export default config;
