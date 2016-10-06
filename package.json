@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "gulp lint",
     "start": "NODE_ENV=development gulp",
-    "build": "NODE_ENV=production gulp build"
+    "build": "gulp clean && NODE_ENV=production gulp build"
   },
   "repository": {
     "type": "git",
