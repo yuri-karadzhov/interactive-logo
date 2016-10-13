@@ -8,10 +8,11 @@
   ],
   "scripts": {
     "lint": "gulp lint",
+    "test": "npm run lint",
     "start": "NODE_ENV=development gulp",
     "buildGlobal": "DISTRIBUTION=global npm run build",
     "build": "gulp clean && NODE_ENV=production gulp build",
-    "prepublish": "npm run build"
+    "prepublish": "npm test && npm run build"
   },
   "repository": "zero-plus-x/interactive-logo",
   "keywords": [
