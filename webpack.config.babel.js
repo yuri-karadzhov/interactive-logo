@@ -99,18 +99,7 @@ if (!IS_DEVELOPMENT) {
   }, {
     test: /\.js$/,
     include: rootPath,
-    loader: 'babel',
-    query: {
-      babelrc: false,
-      presets: [
-        [
-          'es2015',
-          {
-            modules: false
-          }
-        ]
-      ]
-    }
+    loader: 'babel'
   });
   config.plugins.push(
       new webpack.optimize.UglifyJsPlugin({
