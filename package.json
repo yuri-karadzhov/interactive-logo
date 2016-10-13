@@ -1,12 +1,17 @@
 {
-  "name": "zeroplusx",
-  "version": "1.0.0",
+  "name": "@zero-plus-x/logo",
+  "version": "0.1.0",
   "description": "0+x interactive logo.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "lint": "gulp lint",
     "start": "NODE_ENV=development gulp",
-    "build": "gulp clean && NODE_ENV=production gulp build"
+    "buildGlobal": "DISTRIBUTION=global npm run build",
+    "build": "gulp clean && NODE_ENV=production gulp build",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

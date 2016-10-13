@@ -1,3 +1,4 @@
+import './index.scss';
 import Controls from './logo/controls';
 import Logo from './logo/logo';
 

@@ -8,6 +8,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import cfg from './build.config';
 
 const IS_DEVELOPMENT = process.env.NODE_ENV !== 'production';
+const IS_GLOBAL = process.env.DISTRIBUTION === 'global';
 const rootPath = path.join(__dirname, cfg.src.root);
 const outputPath = path.join(__dirname, cfg.src.output);
 const texturesPath = path.join(__dirname, cfg.src.textures);
@@ -17,15 +18,16 @@ const config = {
   context: rootPath,
   entry: {
     index: [
-      IS_DEVELOPMENT
-        ? './index'
-        : './index.global'
+      IS_DEVELOPMENT || IS_GLOBAL
+        ? './index.global'
+        : './index'
     ]
   },
   output: {
     path: outputPath,
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].js',
+    libraryTarget: IS_DEVELOPMENT ? 'var' : 'commonjs2'
   },
   resolve: {
     extensions: ['.js', '.scss']
